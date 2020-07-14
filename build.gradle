@@ -1,8 +1,9 @@
 plugins {
+    id 'application'
     id 'java'
 }
 
-group 'org.example'
+group 'dev.tingh'
 version '1.0-SNAPSHOT'
 
 repositories {
@@ -27,4 +28,7 @@ dependencies {
     testCompile group: 'org.mockito', name: 'mockito-inline', version: '3.3.3'
 }
 
-
+application {
+    applicationDefaultJvmArgs = ['-Xmx256M']
+    mainClassName = 'dev.tingh.sharednote.SharedNoteServer'
+}
