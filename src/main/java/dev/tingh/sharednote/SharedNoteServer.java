@@ -64,6 +64,7 @@ public class SharedNoteServer {
     private void addEndPoints(ServletContextHandler context) {
         try {
             ServerContainer container = getServerContainer(context);
+            container.setDefaultMaxSessionIdleTimeout(1200000);
             container.addEndpoint(SharedNoteServerEndpoint.class);
         } catch (ServletException e) {
             logger.error("Cannot be configured", e);

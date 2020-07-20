@@ -96,7 +96,7 @@ public class SharedNoteServerEndpointTest {
     @Test
     public void testOnError() {
         Exception throwable = new Exception();
-        endpoint1.onError(throwable);
+        endpoint1.onError("test", throwable);
 
         LogEvent event = appender.getEvents().get(0);
         assertEquals(Level.ERROR, event.getLevel());

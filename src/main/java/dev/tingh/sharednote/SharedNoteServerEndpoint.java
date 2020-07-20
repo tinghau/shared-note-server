@@ -75,7 +75,7 @@ public class SharedNoteServerEndpoint {
     }
 
     @OnError
-    public void onError(Throwable throwable) {
+    public void onError(@PathParam("id") String id, Throwable throwable) {
         logger.error("Error encountered", throwable);
     }
 
