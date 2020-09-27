@@ -82,17 +82,18 @@ public class CopyOnWriteEndpointManagerBenchmark {
 
     @Benchmark
     public void addToSameId(EmptyManagerBenchmarkState state) {
-        state.endpoints.stream().forEach(e -> state.manager.add("test", e));
+        state.endpoints.forEach(e -> state.manager.add("test", e));
     }
 
     @Benchmark
+
     public void addToSameIdParallel(EmptyManagerBenchmarkState state) {
         state.endpoints.parallelStream().forEach(e -> state.manager.add("test", e));
     }
 
     @Benchmark
     public void addUniqueId(EmptyManagerBenchmarkState state) {
-        state.ids.stream().forEach(i -> state.manager.add(i, state.endpoints.get(0)));
+        state.ids.forEach(i -> state.manager.add(i, state.endpoints.get(0)));
     }
 
     @Benchmark
@@ -102,7 +103,7 @@ public class CopyOnWriteEndpointManagerBenchmark {
 
     @Benchmark
     public void removeFromSameId(PopulatedSameIdManagerBenchmarkState state) {
-        state.endpoints.stream().forEach(e -> state.manager.remove("test", e));
+        state.endpoints.forEach(e -> state.manager.remove("test", e));
     }
 
     @Benchmark
@@ -112,7 +113,7 @@ public class CopyOnWriteEndpointManagerBenchmark {
 
     @Benchmark
     public void removeFromUniqueId(PopulatedUniqueIdManagerBenchmarkState state) {
-        state.ids.stream().forEach(i -> state.manager.remove(i, state.endpoint));
+        state.ids.forEach(i -> state.manager.remove(i, state.endpoint));
     }
 
     @Benchmark
@@ -123,7 +124,7 @@ public class CopyOnWriteEndpointManagerBenchmark {
 
     @Benchmark
     public void iteratorForSameId(PopulatedSameIdManagerBenchmarkState state) {
-        state.endpoints.stream().forEach(e -> state.manager.iterable("test"));
+        state.endpoints.forEach(e -> state.manager.iterable("test"));
     }
 
     @Benchmark
@@ -133,11 +134,11 @@ public class CopyOnWriteEndpointManagerBenchmark {
 
     @Benchmark
     public void iteratorForUniqueId(PopulatedUniqueIdManagerBenchmarkState state) {
-        state.ids.stream().forEach(i -> state.manager.iterable(i));
+        state.ids.forEach(state.manager::iterable);
     }
 
     @Benchmark
     public void iteratorForUniqueIdParallel(PopulatedUniqueIdManagerBenchmarkState state) {
-        state.ids.parallelStream().forEach(i -> state.manager.iterable(i));
+        state.ids.parallelStream().forEach(state.manager::iterable);
     }
 }

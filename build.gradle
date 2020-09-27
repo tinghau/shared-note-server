@@ -29,6 +29,6 @@ dependencies {
 }
 
 application {
-    applicationDefaultJvmArgs = ['-Xmx256M']
+    applicationDefaultJvmArgs = ['-Xmx128m']
     mainClassName = 'dev.tingh.sharednote.SharedNoteServer'
 }
