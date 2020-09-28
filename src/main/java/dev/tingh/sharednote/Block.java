@@ -20,7 +20,7 @@ public class Block {
 
     @Override
     public String toString() {
-        return "com.ting.Block{" +
+        return "Block{" +
                 "text='" + text + '\'' +
                 ", version=" + version +
                 '}';

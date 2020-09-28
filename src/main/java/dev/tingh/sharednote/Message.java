@@ -38,7 +38,7 @@ public class Message {
 
     @Override
     public String toString() {
-        return "com.ting.Message{" +
+        return "Message{" +
                 "blocks=" + blocks +
                 '}';
     }
