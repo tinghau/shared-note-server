@@ -1,9 +1,11 @@
 package dev.tingh.sharednote;
 
+import java.util.Objects;
+
 public class Block {
 
-    private String text;
-    private long version;
+    private final String text;
+    private final long version;
 
     public Block(String text, long version) {
         this.text = text;
@@ -40,7 +42,7 @@ public class Block {
         if (version != block.version) {
             return false;
         }
-        return text != null ? text.equals(block.text) : block.text == null;
+        return Objects.equals(text, block.text);
     }
 
     @Override

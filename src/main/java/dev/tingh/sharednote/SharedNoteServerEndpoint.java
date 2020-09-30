@@ -7,6 +7,7 @@ import javax.websocket.*;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
+import java.util.Objects;
 import java.util.stream.StreamSupport;
 
 @ServerEndpoint(
@@ -20,7 +21,7 @@ public class SharedNoteServerEndpoint {
     protected Session session;
     // id -> shared end points
     protected static IEndpointManager manager = new CopyOnWriteEndpointManager();
-    private static Versioner versioner = new Versioner();
+    private static final Versioner versioner = new Versioner();
 
     @OnOpen
     public void onOpen(Session session, @PathParam("id") String id) {
@@ -51,6 +52,7 @@ public class SharedNoteServerEndpoint {
         broadcast(id, getVersioner().submit(id, message));
     }
 
+    @SuppressWarnings("SynchronizationOnLocalVariableOrMethodParameter")
     private static void broadcast(String id, Message message) {
         logger.info("Broadcasting id=" + id + ", message=" + message);
 
@@ -89,7 +91,7 @@ public class SharedNoteServerEndpoint {
         }
         SharedNoteServerEndpoint that = (SharedNoteServerEndpoint) o;
 
-        return session != null ? session.equals(that.session) : that.session == null;
+        return Objects.equals(session, that.session);
     }
 
     @Override

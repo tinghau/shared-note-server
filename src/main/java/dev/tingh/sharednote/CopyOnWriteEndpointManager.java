@@ -12,7 +12,7 @@ public class CopyOnWriteEndpointManager implements IEndpointManager {
     @Override
     public void add(String id, SharedNoteServerEndpoint endpoint) {
         idToEndpoints.putIfAbsent(id, new CopyOnWriteArraySet<>());
-        idToEndpoints.compute(id, (s, endpoints) -> {
+        idToEndpoints.computeIfPresent(id, (s, endpoints) -> {
             endpoints.add(endpoint);
             return endpoints;
         });

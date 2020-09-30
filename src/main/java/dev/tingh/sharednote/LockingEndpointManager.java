@@ -6,11 +6,11 @@ import java.util.concurrent.ConcurrentHashMap;
 public class LockingEndpointManager implements IEndpointManager {
 
     protected final ConcurrentHashMap<String, Set<SharedNoteServerEndpoint>> idToEndpoints =
-            new ConcurrentHashMap<String, Set<SharedNoteServerEndpoint>>();
+            new ConcurrentHashMap<>();
 
     public synchronized void add(String id, SharedNoteServerEndpoint endpoint) {
         idToEndpoints.putIfAbsent(id, new HashSet<>());
-        idToEndpoints.compute(id, (s, endpoints) -> {
+        idToEndpoints.computeIfPresent(id, (s, endpoints) -> {
             endpoints.add(endpoint);
             return endpoints;
         });
@@ -24,7 +24,6 @@ public class LockingEndpointManager implements IEndpointManager {
     }
 
     public Iterable<SharedNoteServerEndpoint> iterable(String id) {
-        List<SharedNoteServerEndpoint> endpoints = new ArrayList<>(idToEndpoints.get(id));
-        return endpoints;
+        return new ArrayList<>(idToEndpoints.get(id));
     }
 }

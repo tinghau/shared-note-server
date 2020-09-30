@@ -23,10 +23,10 @@ public class SharedNoteServerTest {
     }
 
     private static final class MockSharedNoteServer extends SharedNoteServer {
-        private Server server = mock(Server.class);
-        private ServerConnector connector = mock(ServerConnector.class);
-        private ServerContainer container = mock(ServerContainer.class);
-        private ServletContextHandler contextHandler = mock(ServletContextHandler.class);
+        private final Server server = mock(Server.class);
+        private final ServerConnector connector = mock(ServerConnector.class);
+        private final ServerContainer container = mock(ServerContainer.class);
+        private final ServletContextHandler contextHandler = mock(ServletContextHandler.class);
 
         @Override
         protected ServletContextHandler getServletContextHandler() {

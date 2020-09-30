@@ -20,11 +20,7 @@ public class SharedNoteClient {
             Session session = getSession();
             session.getBasicRemote().sendObject(new Message(new Block("hello", 1)));
             session.close();
-        } catch (DeploymentException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (EncodeException e) {
+        } catch (DeploymentException | IOException | EncodeException e) {
             e.printStackTrace();
         }
     }

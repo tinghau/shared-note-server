@@ -2,16 +2,15 @@ package dev.tingh.sharednote;
 
 import com.google.gson.Gson;
 
-import javax.websocket.DecodeException;
 import javax.websocket.Decoder;
 import javax.websocket.EndpointConfig;
 
 public class MessageDecoder implements Decoder.Text<Message>{
 
-    private static Gson gson = new Gson();
+    private static final Gson gson = new Gson();
 
     @Override
-    public Message decode(String value) throws DecodeException {
+    public Message decode(String value) {
         return gson.fromJson(value, Message.class);
     }
 

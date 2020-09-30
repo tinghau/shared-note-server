@@ -26,6 +26,6 @@ public class ListAppender extends AbstractAppender {
     }
 
     public void clear() {
-        events.clear();;
+        events.clear();
     }
 }

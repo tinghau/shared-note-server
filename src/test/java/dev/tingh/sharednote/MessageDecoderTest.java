@@ -3,9 +3,6 @@ package dev.tingh.sharednote;
 import org.junit.Assert;
 import org.junit.Test;
 
-import javax.websocket.DecodeException;
-
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class MessageDecoderTest {
@@ -18,7 +15,7 @@ public class MessageDecoderTest {
     }
 
     @Test
-    public void testDecode() throws DecodeException {
+    public void testDecode() {
         String value = "{\"blocks\":[{\"text\":\"hello\",\"version\":0}]}";
         Message message = decoder.decode(value);
 

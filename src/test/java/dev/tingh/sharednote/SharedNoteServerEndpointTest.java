@@ -20,7 +20,7 @@ import static org.mockito.Mockito.*;
 
 public class SharedNoteServerEndpointTest {
 
-    private static ListAppender appender = new ListAppender(SharedNoteServerEndpoint.class.getName());
+    private static final ListAppender appender = new ListAppender(SharedNoteServerEndpoint.class.getName());
 
     private IEndpointManager manager;
     private Session session1;
@@ -36,7 +36,7 @@ public class SharedNoteServerEndpointTest {
     }
 
     @Before
-    public void setup() throws IOException {
+    public void setup() {
         session1 = getSession("1");
         endpoint1 = new MockSharedNoteServerEndpoint();
         endpoint1.onOpen(session1, "test");
@@ -63,7 +63,7 @@ public class SharedNoteServerEndpointTest {
     }
 
     @Test
-    public void testOnOpen() throws IOException {
+    public void testOnOpen() {
         endpoint1.onOpen(session1, "test");
         endpoint2.onOpen(session2, "test");
 
@@ -106,7 +106,7 @@ public class SharedNoteServerEndpointTest {
 
 
     private static final class MockSharedNoteServerEndpoint extends SharedNoteServerEndpoint {
-        private Versioner versioner = new MockVersioner();
+        private final Versioner versioner = new MockVersioner();
 
         @Override
         protected Versioner getVersioner() {

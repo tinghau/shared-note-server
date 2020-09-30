@@ -40,10 +40,8 @@ public class SharedNoteServer {
     }
 
     private CustomRequestLog getRequestLog() {
-        CustomRequestLog log = new CustomRequestLog("./logs/jetty-request.log",
+        return new CustomRequestLog("./logs/jetty-request.log",
                 CustomRequestLog.EXTENDED_NCSA_FORMAT);
-
-        return log;
     }
 
     protected ServletContextHandler getServletContextHandler() {

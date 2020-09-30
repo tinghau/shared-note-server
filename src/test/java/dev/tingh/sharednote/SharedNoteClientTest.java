@@ -21,8 +21,8 @@ public class SharedNoteClientTest {
     }
 
     private static class MockSharedNoteClient extends SharedNoteClient {
-        private RemoteEndpoint.Basic basic = mock(RemoteEndpoint.Basic.class);
-        private Session session = mock(Session.class);
+        private final RemoteEndpoint.Basic basic = mock(RemoteEndpoint.Basic.class);
+        private final Session session = mock(Session.class);
 
 
         public MockSharedNoteClient() {

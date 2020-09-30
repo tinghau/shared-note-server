@@ -2,6 +2,7 @@ package dev.tingh.sharednote;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static java.util.Collections.singletonList;
 
@@ -9,14 +10,10 @@ public class Message {
 
     public static final Message EMPTY = new Message(new ArrayList<>());
 
-    private List<Block> blocks;
+    private final List<Block> blocks;
 
     public Message(List<Block> blocks) {
-        if (blocks != null) {
-            this.blocks = blocks;
-        } else {
-            this.blocks = new ArrayList<>();
-        }
+        this.blocks = Objects.requireNonNullElseGet(blocks, ArrayList::new);
     }
 
     public Message(Block block) {
