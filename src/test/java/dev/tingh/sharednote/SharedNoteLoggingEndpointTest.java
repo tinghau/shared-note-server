@@ -53,7 +53,7 @@ public class SharedNoteLoggingEndpointTest {
         LogEvent event = appender.getEvents().get(0);
         assertEquals(INFO, event.getLevel());
         assertTrue(event.getMessage().getFormattedMessage().contains("Received message"));
-        assertTrue(event.getMessage().getFormattedMessage().contains("com.ting.Message"));
+        assertTrue(event.getMessage().getFormattedMessage().contains("Message"));
     }
 
     @Test
